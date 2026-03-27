@@ -1,4 +1,6 @@
 # FamilyShoppingList
+With React Native Expo😈
+
 <img width="300" height="600"  src="https://github.com/user-attachments/assets/d9870fc1-0fa8-4eec-b785-0f61250cd0a8" />
 
 <img width="300" height="600"  src="https://github.com/user-attachments/assets/701115c7-569d-4e4b-9565-ba7330d95761" />
