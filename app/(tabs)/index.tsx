@@ -246,19 +246,26 @@ export default function HomeScreen() {
   }, []);
 
   const handleDelete = useCallback((item: any) => {
-    Alert.alert(
-      "ลบรายการ",
-      `ต้องการลบ "${item.name}" ออกจากรายการ?`,
-      [
-        { text: "ยกเลิก", style: "cancel" },
-        {
-          text: "ลบ",
-          style: "destructive",
-          onPress: () => deleteMutation.mutate({ id: item.id }),
-        },
-      ]
-    );
-  }, []);
+    const msg = `ต้องการลบ "${item.name}" ออกจากรายการ?`;
+    if (Platform.OS === "web") {
+      if (window.confirm(msg)) {
+        deleteMutation.mutate({ id: item.id });
+      }
+    } else {
+      Alert.alert(
+        "ลบรายการ",
+        msg,
+        [
+          { text: "ยกเลิก", style: "cancel" },
+          {
+            text: "ลบ",
+            style: "destructive",
+            onPress: () => deleteMutation.mutate({ id: item.id }),
+          },
+        ]
+      );
+    }
+  }, [deleteMutation]);
 
   const handleEdit = useCallback((item: any) => {
     setEditingItem(item);
